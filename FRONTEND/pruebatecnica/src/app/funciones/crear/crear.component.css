@@ -1,0 +1,21 @@
+.content-principal {
+    min-height: 80vh; 
+    padding: 20px;
+}
+
+.card {
+    border: 1px solid #007bff;
+    margin-bottom: 20px; 
+}
+
+select {
+    height: 35px;
+    font-size: 15px;
+}
+
+#section-btn{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+}

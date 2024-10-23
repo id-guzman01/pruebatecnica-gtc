@@ -1,0 +1,140 @@
+<section class="content-principal" style="margin-top: 100px;">
+    <div class="d-flex justify-content-center">
+        <div class="card" style="width: 40%;">
+            <div class="card-body">
+                <h1 class="card-title">Formulario de Registro de Estudiantes</h1>
+                <form [formGroup]="createEstudianteForm" (ngSubmit)="createEstudiante()">
+                    <div class="mb-3">
+                        <label for="nombres" class="form-label">Nombres</label>
+                        <input type="text" class="form-control" name="nombres" id="nombres" placeholder="Ingrese el texto" 
+                        formControlName="estudianteNombres"
+                        [ngClass]="{
+                          'is-invalid animated shake':
+                          getEstudianteNombres.invalid && getEstudianteNombres.touched
+                        }"/>
+                        <!-- Validación del campo -->
+                        <div class="alert alert-danger" *ngIf="getEstudianteNombres.invalid && getEstudianteNombres.touched" style="height: 60px; display: flex; align-items: center; justify-content: center;">
+                            <p class="mb-0">Campo requerido</p>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="apellidos" class="form-label">Apellidos</label>
+                        <input type="text" class="form-control" name="apellidos" id="apellidos" placeholder="Ingrese el texto" 
+                        formControlName="estudianteApellidos"
+                        [ngClass]="{
+                          'is-invalid animated shake':
+                          getEstudianteApellidos.invalid && getEstudianteApellidos.touched
+                        }"/>
+                        <!-- Validación del campo -->
+                        <div class="alert alert-danger" *ngIf="getEstudianteApellidos.invalid && getEstudianteApellidos.touched" style="height: 60px; display: flex; align-items: center; justify-content: center;">
+                            <p class="mb-0">Campo requerido</p>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="tipo-documento" class="form-label">Tipo Documento</label>
+                        <select class="form-select" name="tipo-documento" id="tipo-documento" formControlName="tipodocumentoId"
+                        [ngClass]="{
+                          'is-invalid animated shake':
+                          getTipodocumentoId.invalid && getTipodocumentoId.touched
+                        }">
+                            <option selected value="0">Seleccione</option>
+                            @for(item of listTipoDocumento; track $index){
+                                <option [value]="item.tipodocumentoId">{{item.tipodocumentoNombre}} - {{item.tipodocumentoAcronimo}}</option>
+                            }
+                        </select>
+                        <!-- Validación del campo -->
+                        <div class="alert alert-danger" *ngIf="getTipodocumentoId.invalid && getTipodocumentoId.touched" style="height: 60px; display: flex; align-items: center; justify-content: center;">
+                            <p class="mb-0">Seleccione un tipo de documento válido</p>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="no_documento" class="form-label">No. Documento</label>
+                        <input type="number" class="form-control" name="no_documento" id="no_documento" placeholder="Ingrese el texto"
+                        formControlName="estudianteNumerodoc"
+                        [ngClass]="{
+                          'is-invalid animated shake':
+                          getEstudianteNumerodoc.invalid && getEstudianteNumerodoc.touched
+                        }"/>
+                        <!-- Validación del campo -->
+                        <div class="alert alert-danger" *ngIf="getEstudianteNumerodoc.invalid && getEstudianteNumerodoc.touched" style="height: 60px; display: flex; align-items: center; justify-content: center;">
+                            <p class="mb-0">Campo requerido y debe ser un número</p>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="edad" class="form-label">Edad</label>
+                        <input type="number" class="form-control" name="edad" id="edad" placeholder="Ingrese el texto"
+                        formControlName="estudianteEdad"
+                        [ngClass]="{
+                          'is-invalid animated shake':
+                          getEstudianteEdad.invalid && getEstudianteEdad.touched
+                        }"/>
+                        <!-- Validación del campo -->
+                        <div class="alert alert-danger" *ngIf="getEstudianteEdad.invalid && getEstudianteEdad.touched" style="height: 60px; display: flex; align-items: center; justify-content: center;">
+                            <p class="mb-0">Edad requerida y debe estar entre 1 y 120 años</p>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="no_celular" class="form-label">No. Celular</label>
+                        <input type="number" class="form-control" name="no_celular" id="no_celular" placeholder="Ingrese el texto"
+                        formControlName="estudianteCelular"
+                        [ngClass]="{
+                          'is-invalid animated shake':
+                          getEstudianteCelular.invalid && getEstudianteCelular.touched
+                        }"/>
+                        <!-- Validación del campo -->
+                        <div class="alert alert-danger" *ngIf="getEstudianteCelular.invalid && getEstudianteCelular.touched" style="height: 60px; display: flex; align-items: center; justify-content: center;">
+                            <p class="mb-0">Campo requerido y debe ser un número</p>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="no_telefono" class="form-label">No. Teléfono</label>
+                        <input type="number" class="form-control" name="no_telefono" id="no_telefono" placeholder="Ingrese el texto"
+                        formControlName="estudianteTelefono"
+                        [ngClass]="{
+                          'is-invalid animated shake':
+                          getEstudianteTelefono.invalid && getEstudianteTelefono.touched
+                        }"/>
+                        <!-- Validación del campo -->
+                        <div class="alert alert-danger" *ngIf="getEstudianteTelefono.invalid && getEstudianteTelefono.touched" style="height: 60px; display: flex; align-items: center; justify-content: center;">
+                            <p class="mb-0">Debe ser un número válido</p>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="correo" class="form-label">Email</label>
+                        <input type="email" class="form-control" name="correo" id="correo" placeholder="Ingrese el texto"
+                        formControlName="estudianteEmail"
+                        [ngClass]="{
+                          'is-invalid animated shake':
+                          getEstudianteEmail.invalid && getEstudianteEmail.touched
+                        }"/>
+                        <!-- Validación del campo -->
+                        <div class="alert alert-danger" *ngIf="getEstudianteEmail.invalid && getEstudianteEmail.touched" style="height: 60px; display: flex; align-items: center; justify-content: center;">
+                            <p class="mb-0">Email requerido y debe ser válido</p>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="grado" class="form-label">Grado</label>
+                        <select class="form-select" name="grado" id="grado" formControlName="gradoId"
+                        [ngClass]="{
+                          'is-invalid animated shake':
+                          getGradoId.invalid && getGradoId.touched
+                        }">
+                            <option selected value="0">Seleccione</option>
+                            @for(item of listGrado; track $index){
+                                <option [value]="item.gradoId">{{item.gradoNombre}}</option>
+                            }
+                        </select>
+                        <!-- Validación del campo -->
+                        <div class="alert alert-danger" *ngIf="getGradoId.invalid && getGradoId.touched" style="height: 60px; display: flex; align-items: center; justify-content: center;">
+                            <p class="mb-0">Seleccione un grado válido</p>
+                        </div>
+                    </div>
+                    <fieldset id="section-btn">
+                        <button type="submit" class="btn btn-primary">Registrar</button>
+                        <button type="button" class="btn btn-danger" (click)="canelar()">Cancelar</button>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

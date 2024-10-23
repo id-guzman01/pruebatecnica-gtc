@@ -1,0 +1,12 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: pruebatecnica
+  datasource:
+    url: jdbc:mysql://localhost:3306/institucion
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+

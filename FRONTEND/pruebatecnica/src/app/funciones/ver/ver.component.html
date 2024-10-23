@@ -1,0 +1,42 @@
+<h2>Lista de Estudiantes</h2>
+<table>
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Tipo de Documento</th>
+            <th>Número de Documento</th>
+            <th>Nombres</th>
+            <th>Apellidos</th>
+            <th>Edad</th>
+            <th>Celular</th>
+            <th>Teléfono</th>
+            <th>Email</th>
+            <th>Grado</th>
+            <th>Acciones</th> 
+        </tr>
+    </thead>
+    <tbody>
+        @if (listEstudiante.length === 0) {
+            <tr>Sin registros</tr>
+        } @else {
+            @for (estudiante of listEstudiante; track $index) {
+                <tr>
+                    <td>{{ ($index+1) }}</td>
+                    <td>{{ estudiante.tipoDocumentoDTO.tipodocumentoNombre }}</td>
+                    <td>{{ estudiante.estudianteNumerodoc }}</td>
+                    <td>{{ estudiante.estudianteNombres }}</td>
+                    <td>{{ estudiante.estudianteApellidos }}</td>
+                    <td>{{ estudiante.estudianteEdad }}</td>
+                    <td>{{ estudiante.estudianteCelular }}</td>
+                    <td>{{ estudiante.estudianteTelefono }}</td>
+                    <td>{{ estudiante.estudianteEmail }}</td>
+                    <td>{{ estudiante.gradoDTO.gradoNombre }}</td>
+                    <td>
+                        <button class="btn btn-edit">Editar</button>
+                        <button class="btn btn-delete" (click)="deleteEstudiante(estudiante.estudianteId)">Eliminar</button>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
